@@ -1,28 +1,126 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+static def buildTime() {
+    return new Date().format("yyyyMMdd")
+}
 android {
-    compileSdkVersion 28
+    compileSdkVersion build_versions.max_sdk
+
     defaultConfig {
         applicationId "com.cxp.mrr"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.max_sdk
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        config {
+            storeFile file(keystoreProperties['KEYSTORE_FILE'])
+            storePassword keystoreProperties['KEYSTORE_PASSWORD']
+            keyAlias keystoreProperties['KEY_ALIAS']
+            keyPassword keystoreProperties['KEY_PASSWORD']
         }
     }
+
+
+    buildTypes {
+        release {
+            //更改AndroidManifest.xml中预先定义好占位符信息
+            //manifestPlaceholders = [app_icon: "@drawable/icon"]
+            // 不显示Log
+            buildConfigField "boolean", "LEO_DEBUG", "false"
+            //是否zip对齐
+            zipAlignEnabled true
+            // 缩减resource文件
+            shrinkResources true
+            //Proguard
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.config
+        }
+
+        debug {
+            //给applicationId添加后缀“.debug”
+            applicationIdSuffix ".debug"
+            //manifestPlaceholders = [app_icon: "@drawable/launch_beta"]
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
+            //签名
+            signingConfig signingConfigs.config
+        }
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0-beta01'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //junit
+    testImplementation deps.junit
+
+    //google
+    implementation deps.support.constraint_layout
+    implementation deps.support.appcompat
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.support.design
+
+    //glide
+    implementation deps.glide.glide
+    annotationProcessor deps.glide.compiler
+
+    //rxjava
+    implementation deps.rxjava2
+    implementation deps.rx_android
+
+    //retrofit
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.adapter_rxjava2
+
+    //okhttp
+    implementation deps.okhttp.okhttp3
+    implementation deps.okhttp.okhttp3_logging_interceptor
+
+    //gson
+    implementation deps.gson
+
+    //stetho
+    implementation deps.stetho.stetho
+    implementation deps.stetho.stetho_okhttp3
+
+    //编辑数据库，使用方法：手机要和电脑在同一wifi下，然后运行程序后，打开http://XXX.XXX.X.XXX:8080    XXX就是你手机号的IP  在设置->关于手机->状态消息里有IP   (可能有点慢)
+    debugImplementation deps.debug_db
+
+    //logger
+    implementation deps.logger
+
+    //butterknife
+    implementation deps.butterknife.butterknife
+    annotationProcessor deps.butterknife.butterknife_compiler
+
+    //greendao
+    implementation deps.greendao
 }

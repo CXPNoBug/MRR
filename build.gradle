@@ -4,6 +4,7 @@ buildscript {
     addRepos(repositories)
     dependencies {
         classpath deps.android_gradle_plugin
+        classpath deps.greendao_gradle_plugin
     }
 }
 
