@@ -37,6 +37,7 @@
         <activity android:name=".ui.test.activity.RxActivity" />
         <activity android:name=".ui.test.activity.UserActivity" />
         <activity android:name=".ui.test.activity.PermissionsActivity"/>
+        <activity android:name=".ui.test.activity.LoggerActivity"/>
 
         <activity android:name=".ui.system.activity.LoginActivity">
 

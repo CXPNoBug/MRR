@@ -1,8 +1,8 @@
 package com.cxp.mrr.base;
 
 
-import com.cxp.mrr.presenter.Presenter;
-import com.cxp.mrr.view.MvpView;
+import com.cxp.mrr.mvp.presenter.Presenter;
+import com.cxp.mrr.mvp.view.MvpView;
 
 /**
  * 文 件 名: BasePresenter

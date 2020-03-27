@@ -1,9 +1,7 @@
-package com.cxp.mrr.view;
+package com.cxp.mrr.mvp.view;
 
 
-import com.cxp.mrr.model.LoginModel;
-
-import java.util.Map;
+import okhttp3.ResponseBody;
 
 /**
  * 文 件 名: LoginView
@@ -16,9 +14,7 @@ import java.util.Map;
  */
 public interface LoginView extends MvpView {
 
-    //登录请求参
-    Map<String,Object> login();
 
-    //登录返回参
-    void getLogin(LoginModel loginModel);
+    //返回参
+    void getCode(ResponseBody responseBody);
 }

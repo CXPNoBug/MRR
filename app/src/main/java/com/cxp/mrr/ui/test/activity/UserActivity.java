@@ -10,8 +10,8 @@ import android.widget.Button;
 
 import com.cxp.mrr.R;
 import com.cxp.mrr.base.BaseActivity;
-import com.cxp.mrr.model.User;
-import com.cxp.mrr.model.db.UserDB;
+import com.cxp.mrr.mvp.model.User;
+import com.cxp.mrr.mvp.model.db.UserDB;
 import com.cxp.mrr.utils.ConstantUtils;
 
 import java.util.ArrayList;

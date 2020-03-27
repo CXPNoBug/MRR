@@ -1,11 +1,11 @@
-package com.cxp.mrr.model.db;
+package com.cxp.mrr.mvp.model.db;
 
 import android.content.Context;
 
-import com.cxp.mrr.model.DaoMaster;
-import com.cxp.mrr.model.DaoSession;
-import com.cxp.mrr.model.User;
-import com.cxp.mrr.model.UserDao;
+import com.cxp.mrr.mvp.model.DaoMaster;
+import com.cxp.mrr.mvp.model.DaoSession;
+import com.cxp.mrr.mvp.model.User;
+import com.cxp.mrr.mvp.model.UserDao;
 import com.cxp.mrr.other.DBManager;
 
 import org.greenrobot.greendao.query.QueryBuilder;

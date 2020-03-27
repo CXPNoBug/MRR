@@ -6,6 +6,9 @@ buildscript {
         classpath deps.android_gradle_plugin
         classpath deps.greendao_gradle_plugin
     }
+    repositories {
+        google()
+    }
 }
 
 allprojects {

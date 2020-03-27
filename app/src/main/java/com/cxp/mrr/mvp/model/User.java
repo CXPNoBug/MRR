@@ -1,4 +1,4 @@
-package com.cxp.mrr.model;
+package com.cxp.mrr.mvp.model;
 
 /**
  * 文 件 名: User

@@ -18,16 +18,14 @@ import android.widget.EditText;
 
 import com.cxp.mrr.R;
 import com.cxp.mrr.other.EasyPermissions;
-import com.cxp.mrr.ui.widget.dialog.ShapeLoadingDialog;
+import com.cxp.mrr.widget.dialog.ShapeLoadingDialog;
 import com.cxp.mrr.utils.AppUtils;
 import com.cxp.mrr.utils.T;
-import com.cxp.mrr.view.MvpView;
+import com.cxp.mrr.mvp.view.MvpView;
 
 import java.util.List;
 
 public class BaseActivity extends AppCompatActivity implements MvpView, EasyPermissions.PermissionCallbacks {
-
-    public static final String TAG = "MRR";
 
     private ShapeLoadingDialog shapeLoadingDialog;
     private Handler handler = new Handler();
@@ -228,4 +226,10 @@ public class BaseActivity extends AppCompatActivity implements MvpView, EasyPerm
     }
 
     //权限========================================================================
+
+    //页面跳转
+    protected void startActivity(Class cls) {
+        Intent intent = new Intent(this,cls);
+        startActivity(intent);
+    }
 }

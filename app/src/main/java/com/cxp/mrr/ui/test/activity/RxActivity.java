@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.cxp.mrr.R;
 import com.cxp.mrr.base.BaseActivity;
-import com.cxp.mrr.presenter.RxPresenter;
-import com.cxp.mrr.view.RxView;
+import com.cxp.mrr.mvp.presenter.RxPresenter;
+import com.cxp.mrr.mvp.view.RxView;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

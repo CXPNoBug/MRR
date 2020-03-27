@@ -1,4 +1,4 @@
-package com.cxp.mrr.view;
+package com.cxp.mrr.mvp.view;
 
 import android.view.View;
 import android.widget.CompoundButton;

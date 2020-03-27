@@ -1,13 +1,13 @@
-package com.cxp.mrr.presenter;
+package com.cxp.mrr.mvp.presenter;
 
 import android.util.Log;
 
 import com.cxp.mrr.api.RxApi;
 import com.cxp.mrr.api.RxClient;
 import com.cxp.mrr.base.BasePresenter;
-import com.cxp.mrr.model.ResponseModel;
+import com.cxp.mrr.mvp.model.ResponseModel;
 import com.cxp.mrr.utils.ConstantUtils;
-import com.cxp.mrr.view.RxView;
+import com.cxp.mrr.mvp.view.RxView;
 
 import java.io.IOException;
 import java.util.HashMap;

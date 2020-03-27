@@ -1,19 +1,19 @@
-package com.cxp.mrr.presenter;
+package com.cxp.mrr.mvp.presenter;
 
 import android.util.Log;
 
 import com.cxp.mrr.api.MRRApi;
 import com.cxp.mrr.api.RxClient;
 import com.cxp.mrr.base.BasePresenter;
-import com.cxp.mrr.model.LoginModel;
 import com.cxp.mrr.utils.ConstantUtils;
-import com.cxp.mrr.view.LoginView;
+import com.cxp.mrr.mvp.view.LoginView;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
 
 
 /**
@@ -44,18 +44,18 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     //@QueryMap 传递多个参数
     public void login() {
         RxClient.createApi(MRRApi.class).
-                login(getMvpView().login())
+                getCode()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<LoginModel>() {
+                .subscribe(new Observer<ResponseBody>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         mDisposable.add(d);
                     }
 
                     @Override
-                    public void onNext(LoginModel loginModel) {
-                        getMvpView().getLogin(loginModel);
+                    public void onNext(ResponseBody responseBody) {
+                        getMvpView().getCode(responseBody);
                     }
 
                     @Override

@@ -9,13 +9,6 @@
     android:paddingRight="45dp"
     android:paddingTop="50dp">
 
-
-    <!--  <com.tctogether.finance_rivers_lakes.utils.LoadingView
-          android:id="@+id/loadView"
-          android:layout_centerInParent="true"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>-->
-
     <ProgressBar
         android:id="@+id/loadView"
         android:layout_width="wrap_content"

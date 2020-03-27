@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.cxp.mrr.R;
-import com.cxp.mrr.ui.widget.dialog.ShapeLoadingDialog;
+import com.cxp.mrr.widget.dialog.ShapeLoadingDialog;
 import com.cxp.mrr.utils.AppUtils;
 import com.cxp.mrr.utils.T;
-import com.cxp.mrr.view.MvpView;
+import com.cxp.mrr.mvp.view.MvpView;
 
 
 /**

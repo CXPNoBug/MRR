@@ -9,7 +9,7 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.cxp.mrr.R;
-import com.cxp.mrr.model.User;
+import com.cxp.mrr.mvp.model.User;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -37,6 +37,8 @@ import java.util.UUID;
  * 修改备注：
  */
 public class AppUtils {
+
+    public static final String TAG = "MRR";
 
     //下载链接
     public static String DOWNLOAD_APK = "";

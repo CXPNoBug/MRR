@@ -1,12 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
-// Create a variable called keystorePropertiesFile, and initialize it to your
-// keystore.properties file, in the rootProject folder.
 def keystorePropertiesFile = rootProject.file("keystore.properties")
-// Initialize a new Properties() object called keystoreProperties.
 def keystoreProperties = new Properties()
-// Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 static def buildTime() {
@@ -18,7 +14,7 @@ android {
     defaultConfig {
         applicationId "com.cxp.mrr"
         minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.max_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode build_versions.version_code
         versionName build_versions.version_name
 
@@ -43,8 +39,6 @@ android {
 
     buildTypes {
         release {
-            //更改AndroidManifest.xml中预先定义好占位符信息
-            //manifestPlaceholders = [app_icon: "@drawable/icon"]
             // 不显示Log
             buildConfigField "boolean", "LEO_DEBUG", "false"
             //是否zip对齐
@@ -59,17 +53,13 @@ android {
         }
 
         debug {
-            //给applicationId添加后缀“.debug”
-            applicationIdSuffix ".debug"
-            //manifestPlaceholders = [app_icon: "@drawable/launch_beta"]
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            zipAlignEnabled false
-            shrinkResources false
-            minifyEnabled false
-            debuggable true
             //签名
             signingConfig signingConfigs.config
         }
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
     }
 
 }
@@ -123,4 +113,5 @@ dependencies {
 
     //greendao
     implementation deps.greendao
+
 }

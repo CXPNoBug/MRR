@@ -1,7 +1,7 @@
-package com.cxp.mrr.presenter;
+package com.cxp.mrr.mvp.presenter;
 
 
-import com.cxp.mrr.view.MvpView;
+import com.cxp.mrr.mvp.view.MvpView;
 
 /**
  * 文 件 名: Presenter

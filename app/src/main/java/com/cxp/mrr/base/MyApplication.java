@@ -5,8 +5,13 @@ import android.app.Application;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.cxp.mrr.utils.AppUtils;
 import com.cxp.mrr.utils.CrashHandler;
 import com.facebook.stetho.Stetho;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.FormatStrategy;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.PrettyFormatStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +47,16 @@ public class MyApplication extends Application {
         //崩溃捕获
         CrashHandler catchHandler = CrashHandler.getInstance();
         catchHandler.init(getApplicationContext());
+
+        //logger日志
+        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
+//                .showThreadInfo(false)  //（可选）是否显示线程信息。默认值true
+//                .methodCount(0)         //（可选）要显示多少个方法行。默认2
+//                .methodOffset(7)        //（可选）将内部方法调用隐藏到偏移量。默认
+//                .logStrategy(customLog) //（可选）更改日志策略以打印输出。默认LogCat
+                .tag(AppUtils.TAG)   //（可选）每个日志的全局标记。默认PRETTY_LOGGER
+                .build();
+        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 
 
     }

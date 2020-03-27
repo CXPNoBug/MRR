@@ -2,7 +2,7 @@ package com.cxp.mrr.other;
 
 import android.content.Context;
 
-import com.cxp.mrr.model.DaoMaster;
+import com.cxp.mrr.mvp.model.DaoMaster;
 
 import org.greenrobot.greendao.database.Database;
 

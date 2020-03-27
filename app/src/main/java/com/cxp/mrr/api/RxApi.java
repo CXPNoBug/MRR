@@ -1,7 +1,7 @@
 package com.cxp.mrr.api;
 
 
-import com.cxp.mrr.model.ResponseModel;
+import com.cxp.mrr.mvp.model.ResponseModel;
 
 import java.util.Map;
 
